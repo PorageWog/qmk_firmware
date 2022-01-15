@@ -190,3 +190,8 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     rgblight_set_layer_state(_NUMPAD, layer_state_cmp(state, _NUMPAD));
     return state;
 }
+
+const uint16_t PROGMEM backspace_combo[] = {KC_O, KC_P, COMBO_END};
+combo_t key_combos[COMBO_COUNT] = {
+    COMBO(backspace_combo, KC_BSPC)
+};

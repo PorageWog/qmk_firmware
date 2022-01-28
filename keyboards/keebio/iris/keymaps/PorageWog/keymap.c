@@ -4,13 +4,13 @@
 #define _QWERTY 0
 #define _LOWER 1
 #define _RAISE 2
-#define _NUMPAD 3
+#define _FUNCTION 3
 
 enum custom_keycodes {
   QWERTY = SAFE_RANGE,
   LOWER,
   RAISE,
-  NUMPAD,
+  FUNCTION,
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -31,13 +31,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_LOWER] = LAYOUT(
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
-     _______, _______, _______, _______, _______, KC_LPRN,                            KC_RPRN, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_DEL,
+     _______, _______, _______, _______, _______, KC_LPRN,                            KC_RPRN, _______, _______, _______, _______, KC_DEL,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     _______, _______, _______, _______, _______, KC_LCBR,                            KC_RCBR, KC_F5,   KC_F6,   KC_F7,   KC_F8,   RCS(KC_P),
+     _______, _______, _______, _______, _______, KC_LCBR,                            KC_RCBR, _______, _______, _______, _______, RCS(KC_P),
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_CAPS, _______, _______, _______, _______, KC_LBRC,                            KC_RBRC, KC_F9,   KC_F10,  KC_F11,  KC_F12,  LCA(KC_L),
+  LGUI(KC_L), _______, _______, _______, _______, KC_LBRC,                            KC_RBRC, _______, _______, _______, _______, LCA(KC_L),
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-_______, _______, _______, LCTL(KC_INS), LSFT(KC_INS), KC_LT, _______,       _______, KC_GT,   _______, KC_LCBR, KC_RCBR, KC_PIPE, _______,
+     KC_CAPS, _______, KC_CUT,  KC_COPY, KC_PSTE, KC_LT,   _______,          _______, KC_GT,   _______, KC_LCBR, KC_RCBR, KC_PIPE, _______,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
                                     _______, TO(0),   _______,              LCTL(KC_SPC), TO(3),   _______
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
@@ -45,19 +45,34 @@ _______, _______, _______, LCTL(KC_INS), LSFT(KC_INS), KC_LT, _______,       ___
 
   [_RAISE] = LAYOUT(
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
-     _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_LPRN,                            KC_RPRN, _______, _______, KC_MINS, KC_EQL,  KC_DEL,
+     _______, _______, _______, _______, _______, KC_LPRN,                            KC_RPRN, _______, _______, KC_MINS, KC_EQL,  KC_DEL,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     _______, KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_LCBR,                            KC_HOME, KC_PGDN, KC_PGUP, KC_END,  KC_PSCR, RCS(KC_P),
+     _______, _______, _______, _______, _______, KC_LCBR,                            KC_HOME, KC_PGDN, KC_PGUP, KC_END,  KC_PSCR, RCS(KC_P),
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_CAPS, KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_LBRC,                            KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______, LCA(KC_L),
+  LGUI(KC_L), _______, _______, _______, _______, KC_LBRC,                            KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______, LCA(KC_L),
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     _______, _______, _______, _______, _______, KC_LT,   _______,          _______, KC_GT,   _______, KC_LBRC, KC_RBRC, KC_BSLS, _______,
+     KC_CAPS, _______, _______, _______, _______, KC_LT,   _______,          _______, KC_GT,   _______, KC_LBRC, KC_RBRC, KC_BSLS, _______,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
                                     _______, TO(3),   LALT(KC_ENT),              _______, TO(0),   _______
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
   ),
 
-  [_NUMPAD] = LAYOUT(
+  [_FUNCTION] = LAYOUT(
+  //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
+     KC_BRIU, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                              KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_VOLU,
+  //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
+     KC_BRID, KC_F11,  KC_F12,  _______, _______, _______,                            _______, _______, _______, _______, _______, KC_VOLD,
+  //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
+     TO(0),   KC_LGUI, KC_LALT, KC_LSFT, KC_LCTL, _______,                            KC_RCTL, KC_RSFT, KC_RALT, KC_RGUI, _______, KC_MUTE,
+  //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
+     _______, _______, _______, _______, _______, _______, _______,          _______, _______, _______, _______, _______, _______, _______,
+  //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
+                                    _______, _______, _______,                   _______, _______, _______
+                                // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
+  ),
+
+/*
+  [_FUNCTION] = LAYOUT(
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
      _______, _______, _______, _______, _______, _______,                            KC_NLCK, KC_P7,   KC_P8,   KC_P9,   KC_PMNS, KC_BSPC,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
@@ -70,6 +85,7 @@ _______, _______, _______, LCTL(KC_INS), LSFT(KC_INS), KC_LT, _______,       ___
                                     RGB_M_X, RGB_M_G, RGB_M_T,                   KC_PENT, _______, _______
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
   )
+  */
 
 /*
   [_] = LAYOUT(
@@ -99,28 +115,28 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case LOWER:
       if (record->event.pressed) {
         layer_on(_LOWER);
-        update_tri_layer(_LOWER, _RAISE, _NUMPAD);
+        update_tri_layer(_LOWER, _RAISE, _FUNCTION);
       } else {
         layer_off(_LOWER);
-        update_tri_layer(_LOWER, _RAISE, _NUMPAD);
+        update_tri_layer(_LOWER, _RAISE, _FUNCTION);
       }
       return false;
       break;
     case RAISE:
       if (record->event.pressed) {
         layer_on(_RAISE);
-        update_tri_layer(_LOWER, _RAISE, _NUMPAD);
+        update_tri_layer(_LOWER, _RAISE, _FUNCTION);
       } else {
         layer_off(_RAISE);
-        update_tri_layer(_LOWER, _RAISE, _NUMPAD);
+        update_tri_layer(_LOWER, _RAISE, _FUNCTION);
       }
       return false;
       break;
-    case NUMPAD:
+    case FUNCTION:
       if (record->event.pressed) {
-        layer_on(_NUMPAD);
+        layer_on(_FUNCTION);
       } else {
-        layer_off(_NUMPAD);
+        layer_off(_FUNCTION);
       }
       return false;
       break;
@@ -156,7 +172,7 @@ const rgblight_segment_t PROGMEM lower_layer[] = RGBLIGHT_LAYER_SEGMENTS(
 const rgblight_segment_t PROGMEM raise_layer[] = RGBLIGHT_LAYER_SEGMENTS(
     {0, 12, HSV_YELLOW}
 );
-const rgblight_segment_t PROGMEM numpad_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+const rgblight_segment_t PROGMEM function_layer[] = RGBLIGHT_LAYER_SEGMENTS(
     {0, 6, HSV_BLUE},
     {6, 12, HSV_YELLOW}
 );
@@ -169,7 +185,7 @@ const rgblight_segment_t* const PROGMEM my_rgb_layers[] = RGBLIGHT_LAYERS_LIST(
     qwerty_layer,
     lower_layer,
     raise_layer,
-    numpad_layer,
+    function_layer,
     capslock_layer
 );
 
@@ -187,7 +203,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     rgblight_set_layer_state(_QWERTY, layer_state_cmp(state, _QWERTY));
     rgblight_set_layer_state(_LOWER, layer_state_cmp(state, _LOWER));
     rgblight_set_layer_state(_RAISE, layer_state_cmp(state, _RAISE));
-    rgblight_set_layer_state(_NUMPAD, layer_state_cmp(state, _NUMPAD));
+    rgblight_set_layer_state(_FUNCTION, layer_state_cmp(state, _FUNCTION));
     return state;
 }
 

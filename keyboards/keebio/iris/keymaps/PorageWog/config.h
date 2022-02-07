@@ -22,5 +22,5 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define RGBLIGHT_LAYERS
 #define IGNORE_MOD_TAP_INTERRUPT
 #define COMBO_COUNT 1
-#define TAPPING_TERM 210
+#define TAPPING_TERM 200
 #define PERMISSIVE_HOLD

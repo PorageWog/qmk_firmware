@@ -1,17 +1,18 @@
 #include QMK_KEYBOARD_H
 
-
 #define _QWERTY 0
 #define _LOWER 1
 #define _RAISE 2
 #define _FUNCTION 3
 
+#define HRM_A MT(MOD_LGUI, KC_A)
 #define HRM_S MT(MOD_LALT, KC_S)
 #define HRM_D MT(MOD_LSFT, KC_D)
 #define HRM_F MT(MOD_LCTL, KC_F)
 #define HRM_J MT(MOD_RCTL, KC_J)
 #define HRM_K MT(MOD_RSFT, KC_K)
 #define HRM_L MT(MOD_LALT, KC_L)
+#define HRM_SCL MT(MOD_LGUI, KC_SCLN)
 
 #define COPY LCTL(KC_INS)
 #define PASTE LSFT(KC_INS)
@@ -23,7 +24,7 @@
 #define KC_QWRT TO(0)
 #define KC_LWR OSL(1)
 #define KC_RSE OSL(2)
-#define KC_F_L TO(3)
+#define KC_FUNC TO(3)
 #define KC_F_OS OSL(3)
 #define W_RSE LT(2, KC_LGUI)
 
@@ -42,7 +43,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
      KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                               KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSLS,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_ESC,  KC_A,    HRM_S,   HRM_D,   HRM_F,   KC_G,                               KC_H,    HRM_J,   HRM_K,   HRM_L,   KC_SCLN, KC_QUOT,
+     KC_ESC,  HRM_A,   HRM_S,   HRM_D,   HRM_F,   KC_G,                               KC_H,    HRM_J,   HRM_K,   HRM_L,   HRM_SCL, KC_QUOT,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
      KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_EQL,           KC_MINS, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
@@ -60,7 +61,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
      KC_CAPS, _______, _______, COPY,    PASTE,   KC_LT,   _______,          _______, KC_GT,   _______, KC_LCBR, KC_RCBR, KC_PIPE, _______,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
-                                    KC_QWRT, KC_QWRT, _______,                   _______, KC_F_L,  KC_F_OS
+                                    KC_QWRT, KC_QWRT, _______,                   _______, KC_FUNC,  KC_F_OS
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
   ),
 
@@ -74,7 +75,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
      KC_CAPS, _______, _______, _______, _______, _______, _______,          _______, _______, _______, KC_LBRC, KC_RBRC, KC_BSLS, _______,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
-                                    OSL(3),  TO(3),   CONTEXT_ACTIONS,   CODE_COMPLETION, KC_QWRT, KC_QWRT
+                                    KC_F_OS, KC_FUNC, CONTEXT_ACTIONS,   CODE_COMPLETION, KC_QWRT, KC_QWRT
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
   ),
 
@@ -88,7 +89,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
      _______, _______, _______, _______, _______, _______, _______,          _______, _______, _______, _______, _______, _______, _______,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
-                                    _______, _______, _______,                   _______, _______, _______
+                                    KC_QWRT, KC_QWRT, _______,                   _______, KC_QWRT, KC_QWRT
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
   ),
 
@@ -232,3 +233,16 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 // combo_t key_combos[COMBO_COUNT] = {
 //     COMBO(backspace_combo, KC_BSPC)
 // };
+
+uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
+   switch (keycode) {
+      case HRM_A:
+      case HRM_SCL:
+         return 350;
+      case HRM_S:
+      case HRM_L:
+         return 250;
+      default:
+         return 200;
+   }
+}

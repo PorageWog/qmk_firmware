@@ -9,7 +9,7 @@ AUDIO_ENABLE       = no
 NKRO_ENABLE        = yes
 BACKLIGHT_ENABLE   = no
 SWAP_HANDS_ENABLE  = no
-COMBO_ENABLE       = yes
+COMBO_ENABLE       = no
 BOOTLOADER        = qmk-dfu
 
 INDICATOR_LIGHTS            = no

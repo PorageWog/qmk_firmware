@@ -242,6 +242,9 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
       case HRM_S:
       case HRM_L:
          return 250;
+      case HRM_D:
+      case HRM_K:
+	 return 150;
       default:
          return 200;
    }

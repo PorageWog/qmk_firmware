@@ -14,10 +14,15 @@
 #define HRM_L MT(MOD_LALT, KC_L)
 #define HRM_SCL MT(MOD_LGUI, KC_SCLN)
 
+#define TD_Q TD(TAPDANCE_Q_TAB)
+#define TD_A TD(TAPDANCE_A_ESC)
+#define TD_Y TD(TAPDANCE_Y_BSPC)
+#define TD_SCLN TD(TAPDANCE_SCLN_QUOT)
+#define LOCK TD(TAPDANCE_LOCK)
+
 #define COPY LCTL(KC_INS)
 #define PASTE LSFT(KC_INS)
 
-#define LOCK LGUI(KC_L)
 #define CONTEXT_ACTIONS LALT(KC_ENT)
 #define CODE_COMPLETION LCTL(KC_SPC)
 
@@ -35,15 +40,31 @@ enum custom_keycodes {
   FUNCTION,
 };
 
+enum {
+  TAPDANCE_Q_TAB,
+  TAPDANCE_A_ESC,
+  TAPDANCE_Y_BSPC,
+  TAPDANCE_SCLN_QUOT,
+  TAPDANCE_LOCK
+};
+
+qk_tap_dance_action_t tap_dance_actions[] = {
+  [TAPDANCE_Q_TAB] = ACTION_TAP_DANCE_DOUBLE(KC_Q, KC_TAB),
+  [TAPDANCE_A_ESC] = ACTION_TAP_DANCE_DOUBLE(KC_A, KC_ESC),
+  [TAPDANCE_Y_BSPC] = ACTION_TAP_DANCE_DOUBLE(KC_Y, KC_BSPC),
+  [TAPDANCE_SCLN_QUOT] = ACTION_TAP_DANCE_DOUBLE(KC_SCLN, KC_QUOT),
+  [TAPDANCE_LOCK] = ACTION_TAP_DANCE_DOUBLE(_______, LGUI(KC_L))
+};
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_QWERTY] = LAYOUT(
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
      _______, _______, _______, _______, _______, _______,                            _______, _______, _______, _______, _______, KC_BSPC,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                               KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
+     KC_TAB,  TD_Q,    KC_W,    KC_E,    KC_R,    KC_T,                               TD_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_ESC,  HRM_A,   HRM_S,   HRM_D,   HRM_F,   KC_G,                               KC_H,    HRM_J,   HRM_K,   HRM_L,   HRM_SCL, KC_QUOT,
+     KC_ESC,  TD_A,    HRM_S,   HRM_D,   HRM_F,   KC_G,                               KC_H,    HRM_J,   HRM_K,   HRM_L,   TD_SCLN, KC_QUOT,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
      KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_EQL,           KC_MINS, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
@@ -55,13 +76,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
      _______, _______, _______, _______, _______, _______,                            _______, _______, _______, _______, _______, _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     _______, _______, _______, _______, _______, KC_LCBR,                            KC_RCBR, _______, _______, _______, _______, KC_DEL,
+     _______, _______, _______, _______, _______, KC_LCBR,                            KC_RCBR, _______, _______, _______, KC_DEL,  KC_DEL,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     LOCK,    _______, _______, _______, _______, KC_LBRC,                            KC_RBRC, _______, _______, _______, _______, _______,
+     LOCK,    LOCK,    _______, _______, _______, KC_LBRC,                            KC_RBRC, _______, _______, _______, _______, _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_CAPS, _______, _______, _______, _______, KC_LT,   _______,          _______, KC_GT,   _______, KC_HOME, KC_PGDN, KC_PGUP, KC_END,
+     KC_CAPS, KC_CAPS, _______, _______, _______, KC_LT,   _______,          _______, KC_GT,   _______, KC_HOME, KC_PGDN, KC_PGUP, KC_END,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
-                                    KC_QWRT, KC_F_OS, _______,                   _______, KC_F_OS, KC_QWRT
+                                    KC_QWRT, KC_FUNC, _______,                   _______, KC_F_OS, KC_QWRT
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
   ),
 
@@ -71,11 +92,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
      _______, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                               KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     LOCK,    _______, _______, _______, _______, _______,                            KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______, KC_GRV,
+     LOCK,    LOCK,    _______, _______, _______, _______,                            KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_GRV,  KC_GRV,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_CAPS, _______, _______, COPY,    PASTE,   _______, _______,          _______, _______, _______, _______, _______, KC_BSLS, _______,
+     KC_CAPS, KC_CAPS, _______, COPY,    PASTE,   _______, _______,          _______, _______, _______, _______, _______, KC_BSLS, _______,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
-                                    KC_F_OS, KC_QWRT, CONTEXT_ACTIONS,   CODE_COMPLETION, KC_QWRT, KC_F_OS
+                                    KC_FUNC, KC_QWRT, CONTEXT_ACTIONS,   CODE_COMPLETION, KC_QWRT, KC_F_OS
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
   ),
 

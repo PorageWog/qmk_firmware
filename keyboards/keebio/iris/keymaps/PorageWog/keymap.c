@@ -16,7 +16,6 @@
 
 #define TD_Q TD(TAPDANCE_Q_TAB)
 #define TD_A TD(TAPDANCE_A_ESC)
-#define TD_Y TD(TAPDANCE_Y_BSPC)
 #define TD_SCLN TD(TAPDANCE_SCLN_QUOT)
 #define LOCK TD(TAPDANCE_LOCK)
 
@@ -43,7 +42,6 @@ enum custom_keycodes {
 enum {
   TAPDANCE_Q_TAB,
   TAPDANCE_A_ESC,
-  TAPDANCE_Y_BSPC,
   TAPDANCE_SCLN_QUOT,
   TAPDANCE_LOCK
 };
@@ -51,7 +49,6 @@ enum {
 qk_tap_dance_action_t tap_dance_actions[] = {
   [TAPDANCE_Q_TAB] = ACTION_TAP_DANCE_DOUBLE(KC_Q, KC_TAB),
   [TAPDANCE_A_ESC] = ACTION_TAP_DANCE_DOUBLE(KC_A, KC_ESC),
-  [TAPDANCE_Y_BSPC] = ACTION_TAP_DANCE_DOUBLE(KC_Y, KC_BSPC),
   [TAPDANCE_SCLN_QUOT] = ACTION_TAP_DANCE_DOUBLE(KC_SCLN, KC_QUOT),
   [TAPDANCE_LOCK] = ACTION_TAP_DANCE_DOUBLE(_______, LGUI(KC_L))
 };
@@ -60,9 +57,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_QWERTY] = LAYOUT(
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
-     _______, _______, _______, _______, _______, _______,                            _______, _______, _______, _______, _______, KC_BSPC,
+     KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                               KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_TAB,  TD_Q,    KC_W,    KC_E,    KC_R,    KC_T,                               TD_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
+     KC_TAB,  TD_Q,    KC_W,    KC_E,    KC_R,    KC_T,                               KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_DEL,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
      KC_ESC,  TD_A,    HRM_S,   HRM_D,   HRM_F,   KC_G,                               KC_H,    HRM_J,   HRM_K,   HRM_L,   TD_SCLN, KC_QUOT,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
@@ -92,7 +89,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
      _______, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                               KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     LOCK,    LOCK,    _______, _______, _______, _______,                            KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_GRV,  KC_GRV,
+     LOCK,    LOCK,    _______, _______, _______, _______,                            KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_GRV,  _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
      KC_CAPS, KC_CAPS, _______, COPY,    PASTE,   _______, _______,          _______, _______, _______, _______, _______, KC_BSLS, _______,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘

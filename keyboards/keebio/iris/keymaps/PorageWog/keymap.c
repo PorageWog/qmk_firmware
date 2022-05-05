@@ -14,6 +14,10 @@
 #define HRM_L MT(MOD_LALT, KC_L)
 #define HRM_SCL MT(MOD_LGUI, KC_SCLN)
 
+#define ALTWIN MT(MOD_LALT, KC_LGUI)
+#define SFTENT MT(MOD_LSFT, KC_ENT)
+#define SFTSPC MT(MOD_RSFT, KC_SPC)
+
 #define TD_Q TD(TAPDANCE_Q_TAB)
 #define TD_A TD(TAPDANCE_A_ESC)
 #define TD_SCLN TD(TAPDANCE_SCLN_QUOT)
@@ -67,7 +71,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
      KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_EQL,           KC_MINS, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
-                                    KC_LCTL, KC_LALT, KC_SFTENT,                 KC_SPC,  KC_RSE,  KC_LWR
+                                    KC_LCTL, ALTWIN,  SFTENT,                    SFTSPC,  KC_RSE,  KC_LWR
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
   ),
 

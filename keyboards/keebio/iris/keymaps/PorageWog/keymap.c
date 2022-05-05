@@ -43,14 +43,16 @@ enum {
   TAPDANCE_Q_TAB,
   TAPDANCE_A_ESC,
   TAPDANCE_SCLN_QUOT,
-  TAPDANCE_LOCK
+  TAPDANCE_LOCK,
+  TAPDANCE_CAPS
 };
 
 qk_tap_dance_action_t tap_dance_actions[] = {
   [TAPDANCE_Q_TAB] = ACTION_TAP_DANCE_DOUBLE(KC_Q, KC_TAB),
   [TAPDANCE_A_ESC] = ACTION_TAP_DANCE_DOUBLE(KC_A, KC_ESC),
   [TAPDANCE_SCLN_QUOT] = ACTION_TAP_DANCE_DOUBLE(KC_SCLN, KC_QUOT),
-  [TAPDANCE_LOCK] = ACTION_TAP_DANCE_DOUBLE(_______, LGUI(KC_L))
+  [TAPDANCE_LOCK] = ACTION_TAP_DANCE_DOUBLE(_______, LGUI(KC_L)),
+  [TAPDANCE_CAPS] = ACTION_TAP_DANCE_DOUBLE(_______, KC_CAPS)
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -77,7 +79,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
      LOCK,    _______, _______, _______, KC_LBRC, KC_LBRC,                            KC_RBRC, KC_RBRC, _______, _______, _______, _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_CAPS, _______, _______, _______, KC_LT,   KC_LT,   _______,          _______, KC_GT,   KC_GT,   KC_HOME, KC_PGDN, KC_PGUP, KC_END,
+     CAPS,    _______, _______, _______, KC_LT,   KC_LT,   _______,          _______, KC_GT,   KC_GT,   KC_HOME, KC_PGDN, KC_PGUP, KC_END,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
                                     KC_QWRT, KC_FUNC, KC_EQL,                    KC_MINS, KC_F_OS, KC_QWRT
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
@@ -91,7 +93,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
      LOCK,    _______, _______, _______, _______, _______,                            KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_GRV,  _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_CAPS, _______, _______, COPY,    PASTE,   _______, _______,          _______, _______, _______, _______, _______, KC_BSLS, _______,
+     CAPS,    _______, _______, COPY,    PASTE,   _______, _______,          _______, _______, _______, _______, _______, KC_BSLS, _______,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
                                     KC_FUNC, KC_QWRT, CONTEXT_ACTIONS,   CODE_COMPLETION, KC_QWRT, KC_F_OS
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘

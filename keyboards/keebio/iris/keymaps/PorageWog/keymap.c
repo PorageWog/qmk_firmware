@@ -26,10 +26,10 @@
 #define CODE_COMPLETION LCTL(KC_SPC)
 
 #define KC_QWRT TO(0)
-#define KC_LWR OSL(1)
-#define KC_RSE OSL(2)
+#define KC_LWR MO(1)
+#define KC_RSE MO(2)
 #define KC_FUNC TO(3)
-#define KC_F_OS OSL(3)
+#define KC_F_OS MO(3)
 #define W_RSE LT(2, KC_LGUI)
 
 enum custom_keycodes {
@@ -73,13 +73,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
      _______, _______, _______, _______, _______, _______,                            _______, _______, _______, _______, _______, _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     _______, _______, _______, _______, _______, KC_LCBR,                            KC_RCBR, _______, _______, _______, KC_DEL,  KC_DEL,
+     _______, _______, _______, _______, KC_LCBR, KC_LCBR,                            KC_RCBR, KC_RCBR, _______, _______, KC_PSCR, KC_DEL,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     LOCK,    LOCK,    _______, _______, _______, KC_LBRC,                            KC_RBRC, _______, _______, _______, _______, _______,
+     LOCK,    LOCK,    _______, _______, KC_LBRC, KC_LBRC,                            KC_RBRC, KC_RBRC, _______, _______, _______, _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_CAPS, KC_CAPS, _______, _______, _______, KC_LT,   _______,          _______, KC_GT,   _______, KC_HOME, KC_PGDN, KC_PGUP, KC_END,
+     KC_CAPS, KC_CAPS, _______, _______, KC_LT,   KC_LT,   _______,          _______, KC_GT,   KC_GT,   KC_HOME, KC_PGDN, KC_PGUP, KC_END,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
-                                    KC_QWRT, KC_FUNC, _______,                   _______, KC_F_OS, KC_QWRT
+                                    KC_QWRT, KC_FUNC, KC_EQL,                    KC_MINS, KC_F_OS, KC_QWRT
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
   ),
 
@@ -232,17 +232,17 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 }
 
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
-   switch (keycode) {
-      case HRM_A:
-      case HRM_SCL:
-         return 350;
-      case HRM_S:
-      case HRM_L:
-         return 250;
-      case HRM_D:
-      case HRM_K:
-	 return 150;
-      default:
-         return 200;
-   }
+    switch (keycode) {
+        case HRM_A:
+        case HRM_SCL:
+            return 350;
+        case HRM_S:
+        case HRM_L:
+            return 250;
+        case HRM_D:
+        case HRM_K:
+            return 150;
+        default:
+            return 200;
+    }
 }

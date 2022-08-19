@@ -15,6 +15,7 @@
 #define HRM_SCL MT(MOD_LGUI, KC_SCLN)
 
 #define ALTWIN MT(MOD_LALT, KC_LGUI)
+#define ALTENT MT(MOD_LALT, KC_ENT)
 #define SHIFTorENTER MT(MOD_LSFT, KC_ENT)
 #define SHIFTandENTER LSFT(KC_ENT)
 
@@ -73,7 +74,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
      KC_LBRC, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_EQL,           KC_MINS, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RBRC,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
-                                    KC_LCTL, ALTWIN,  SHIFTorENTER,              KC_SPC,  KC_RSE,  KC_LWR
+                                    KC_LCTL, ALTENT,  KC_LSFT,                   KC_SPC,  KC_RSE,  KC_LWR
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
   ),
 
@@ -87,7 +88,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
      KC_BRID, _______, _______, _______, _______, KC_F11,  _______,          _______, KC_F12,  _______, _______, _______, _______, KC_VOLD,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
-                                    _______, _______, SHIFTandENTER,             _______, KC_FUNC, _______
+                                    _______, KC_LGUI, SHIFTandENTER,             _______, KC_FUNC, _______
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
   ),
 

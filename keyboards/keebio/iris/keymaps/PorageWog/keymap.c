@@ -15,14 +15,15 @@
 #define HRM_SCL MT(MOD_LGUI, KC_SCLN)
 
 #define ALTWIN MT(MOD_LALT, KC_LGUI)
-#define SFTENT MT(MOD_LSFT, KC_ENT)
-#define SFTSPC MT(MOD_RSFT, KC_SPC)
+#define SHIFTorENTER MT(MOD_LSFT, KC_ENT)
+#define SHIFTandENTER LSFT(KC_ENT)
 
 #define TD_Q TD(TAPDANCE_Q_TAB)
 #define TD_A TD(TAPDANCE_A_ESC)
 #define TD_SCLN TD(TAPDANCE_SCLN_QUOT)
 #define LOCK TD(TAPDANCE_LOCK)
 #define CAPS TD(TAPDANCE_CAPS)
+#define RSESPC TD(TAPDANCE_RSESPC)
 
 #define COPY LCTL(KC_INS)
 #define PASTE LSFT(KC_INS)
@@ -47,7 +48,8 @@ enum {
   TAPDANCE_A_ESC,
   TAPDANCE_SCLN_QUOT,
   TAPDANCE_LOCK,
-  TAPDANCE_CAPS
+  TAPDANCE_CAPS,
+  TAPDANCE_RSESPC
 };
 
 qk_tap_dance_action_t tap_dance_actions[] = {
@@ -55,7 +57,8 @@ qk_tap_dance_action_t tap_dance_actions[] = {
   [TAPDANCE_A_ESC] = ACTION_TAP_DANCE_DOUBLE(KC_A, KC_ESC),
   [TAPDANCE_SCLN_QUOT] = ACTION_TAP_DANCE_DOUBLE(KC_SCLN, KC_QUOT),
   [TAPDANCE_LOCK] = ACTION_TAP_DANCE_DOUBLE(_______, LGUI(KC_L)),
-  [TAPDANCE_CAPS] = ACTION_TAP_DANCE_DOUBLE(_______, KC_CAPS)
+  [TAPDANCE_CAPS] = ACTION_TAP_DANCE_DOUBLE(_______, KC_CAPS),
+  [TAPDANCE_RSESPC] = ACTION_TAP_DANCE_DOUBLE(KC_RSE, KC_RSFT)
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -70,7 +73,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
      KC_LBRC, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_EQL,           KC_MINS, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RBRC,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
-                                    KC_LCTL, ALTWIN,  SFTENT,                    SFTSPC,  KC_RSE,  KC_LWR
+                                    KC_LCTL, ALTWIN,  SHIFTorENTER,              KC_SPC,  KC_RSE,  KC_LWR
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
   ),
 
@@ -84,7 +87,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
      KC_BRID, _______, _______, _______, _______, KC_F11,  _______,          _______, KC_F12,  _______, _______, _______, _______, KC_VOLD,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
-                                    _______, _______, _______,                   _______, KC_FUNC, _______
+                                    _______, _______, SHIFTandENTER,             _______, KC_FUNC, _______
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
   ),
 
@@ -246,6 +249,7 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
             return 250;
         case HRM_D:
         case HRM_K:
+	case SHIFTorENTER:
             return 150;
         default:
             return 200;

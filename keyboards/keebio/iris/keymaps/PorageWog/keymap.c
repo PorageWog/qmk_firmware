@@ -1,9 +1,9 @@
 #include QMK_KEYBOARD_H
 
 #define _QWERTY 0
-#define _LOWER 1
-#define _RAISE 2
-#define _FUNCTION 3
+#define _SYMBOL 1
+#define _NUMBER 2
+#define _MISC 3
 
 #define HRM_A MT(MOD_LGUI, KC_A)
 #define HRM_S MT(MOD_LALT, KC_S)
@@ -32,9 +32,9 @@
 #define CONTEXT_ACTIONS LALT(KC_ENT)
 #define CODE_COMPLETION LCTL(KC_SPC)
 
-#define KC_LWR MO(1)
-#define KC_RSE MO(2)
-#define KC_FUNC MO(3)
+#define KC_SYM MO(1)
+#define KC_NUM MO(2)
+#define KC_MISC MO(3)
 #define W_RSE LT(2, KC_LGUI)
 
 enum custom_keycodes {
@@ -59,7 +59,7 @@ qk_tap_dance_action_t tap_dance_actions[] = {
   [TAPDANCE_SCLN_QUOT] = ACTION_TAP_DANCE_DOUBLE(KC_SCLN, KC_QUOT),
   [TAPDANCE_LOCK] = ACTION_TAP_DANCE_DOUBLE(_______, LGUI(KC_L)),
   [TAPDANCE_CAPS] = ACTION_TAP_DANCE_DOUBLE(_______, KC_CAPS),
-  [TAPDANCE_RSESPC] = ACTION_TAP_DANCE_DOUBLE(KC_RSE, KC_RSFT)
+  [TAPDANCE_RSESPC] = ACTION_TAP_DANCE_DOUBLE(KC_NUM, KC_RSFT)
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -74,11 +74,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
      KC_LBRC, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_EQL,           KC_MINS, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RBRC,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
-                                    KC_LCTL, ALTENT,  KC_LSFT,                   KC_SPC,  KC_RSE,  KC_LWR
+                                    KC_LCTL, ALTENT,  KC_LSFT,                   KC_SPC,  KC_NUM,  KC_SYM
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
   ),
 
-  [_LOWER] = LAYOUT(
+  [_SYMBOL] = LAYOUT(
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
      _______, _______, _______, _______, _______, _______,                            _______, _______, _______, _______, _______, _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
@@ -88,11 +88,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
      KC_BRID, _______, _______, _______, _______, KC_F11,  _______,          _______, KC_F12,  _______, _______, _______, _______, KC_VOLD,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
-                                    _______, KC_LGUI, SHIFTandENTER,             _______, KC_FUNC, _______
+                                    _______, KC_LGUI, SHIFTandENTER,             _______, KC_MISC, _______
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
   ),
 
-  [_RAISE] = LAYOUT(
+  [_NUMBER] = LAYOUT(
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
      _______, _______, _______, _______, _______, _______,                            _______, _______, _______, _______, _______, _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
@@ -102,11 +102,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
      CAPS,    _______, _______, COPY,    PASTE,   _______, _______,          _______, _______, _______, _______, _______, KC_BSLS, _______,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
-                                    _______, _______, CONTEXT_ACTIONS,   CODE_COMPLETION, _______, KC_FUNC
+                                    _______, _______, CONTEXT_ACTIONS,   CODE_COMPLETION, _______, KC_MISC
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
   ),
 
-  [_FUNCTION] = LAYOUT(
+  [_MISC] = LAYOUT(
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
      _______, _______, _______, _______, _______, _______,                            _______, _______, _______, _______, _______, _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
@@ -147,29 +147,29 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       break;
     case LOWER:
       if (record->event.pressed) {
-        layer_on(_LOWER);
-        update_tri_layer(_LOWER, _RAISE, _FUNCTION);
+        layer_on(_SYMBOL);
+        update_tri_layer(_SYMBOL, _NUMBER, _MISC);
       } else {
-        layer_off(_LOWER);
-        update_tri_layer(_LOWER, _RAISE, _FUNCTION);
+        layer_off(_SYMBOL);
+        update_tri_layer(_SYMBOL, _NUMBER, _MISC);
       }
       return false;
       break;
     case RAISE:
       if (record->event.pressed) {
-        layer_on(_RAISE);
-        update_tri_layer(_LOWER, _RAISE, _FUNCTION);
+        layer_on(_NUMBER);
+        update_tri_layer(_SYMBOL, _NUMBER, _MISC);
       } else {
-        layer_off(_RAISE);
-        update_tri_layer(_LOWER, _RAISE, _FUNCTION);
+        layer_off(_NUMBER);
+        update_tri_layer(_SYMBOL, _NUMBER, _MISC);
       }
       return false;
       break;
     case FUNCTION:
       if (record->event.pressed) {
-        layer_on(_FUNCTION);
+        layer_on(_MISC);
       } else {
-        layer_off(_FUNCTION);
+        layer_off(_MISC);
       }
       return false;
       break;
@@ -234,9 +234,9 @@ bool led_update_user(led_t led_state) {
 
 layer_state_t layer_state_set_user(layer_state_t state) {
     rgblight_set_layer_state(_QWERTY, layer_state_cmp(state, _QWERTY));
-    rgblight_set_layer_state(_LOWER, layer_state_cmp(state, _LOWER));
-    rgblight_set_layer_state(_RAISE, layer_state_cmp(state, _RAISE));
-    rgblight_set_layer_state(_FUNCTION, layer_state_cmp(state, _FUNCTION));
+    rgblight_set_layer_state(_SYMBOL, layer_state_cmp(state, _SYMBOL));
+    rgblight_set_layer_state(_NUMBER, layer_state_cmp(state, _NUMBER));
+    rgblight_set_layer_state(_MISC, layer_state_cmp(state, _MISC));
     return state;
 }
 

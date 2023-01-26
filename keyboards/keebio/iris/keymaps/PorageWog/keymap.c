@@ -32,6 +32,9 @@
 #define CONTEXT_ACTIONS LALT(KC_ENT)
 #define CODE_COMPLETION LCTL(KC_SPC)
 #define PRT_WIN LALT(KC_PSCR)
+#define FIND RCS(KC_F)
+#define RENAME LSFT(KC_F6)
+#define USAGES LCA(KC_F7)
 
 #define KC_SYM MO(1)
 #define KC_NUMS MO(2)
@@ -67,7 +70,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_QWERTY] = LAYOUT(
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
-     KC_GRV  ,KC_1    ,KC_2    ,KC_3    ,KC_4    ,KC_5                               ,KC_6    ,KC_7    ,KC_8    ,KC_9    ,KC_0    ,KC_BSPC
+     _______ ,_______ ,_______ ,_______ ,FIND    ,_______                            ,RENAME  ,USAGES  ,_______ ,_______ ,HINT    ,_______
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
     ,KC_TAB  ,KC_Q    ,KC_W    ,KC_E    ,KC_R    ,KC_T                               ,KC_Y    ,KC_U    ,KC_I    ,KC_O    ,KC_P    ,KC_BSPC
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤

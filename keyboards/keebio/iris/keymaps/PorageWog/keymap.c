@@ -35,6 +35,7 @@
 #define FIND RCS(KC_F)
 #define RENAME LSFT(KC_F6)
 #define USAGES LCA(KC_F7)
+#define HINT C(KC_P)
 
 #define KC_SYM MO(1)
 #define KC_NUMS MO(2)

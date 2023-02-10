@@ -34,7 +34,7 @@
 #define PRT_WIN LALT(KC_PSCR)
 #define FIND RCS(KC_F)
 #define RENAME LSFT(KC_F6)
-#define USAGES LCA(KC_F7)
+#define USAGES LALT(KC_F7)
 #define FORMAT LCA(KC_L)
 #define HINT C(KC_P)
 

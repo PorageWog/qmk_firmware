@@ -42,7 +42,7 @@ enum {
 };
 
 qk_tap_dance_action_t tap_dance_actions[] = {
-  [TAPDANCE_LOCK] = ACTION_TAP_DANCE_DOUBLE(_______, LGUI(KC_L)),
+  [TAPDANCE_LOCK] = ACTION_TAP_DANCE_DOUBLE(_______, G(KC_L)),
   [TAPDANCE_CAPS] = ACTION_TAP_DANCE_DOUBLE(_______, KC_CAPS),
 };
 

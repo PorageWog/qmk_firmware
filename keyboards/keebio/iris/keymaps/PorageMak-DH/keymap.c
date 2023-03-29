@@ -5,15 +5,6 @@
 #define _SYMBOL 2
 #define _NUMBER 3
 
-#define HRM_A MT(MOD_LGUI, KC_A)
-#define HRM_S MT(MOD_LALT, KC_S)
-#define HRM_D MT(MOD_LSFT, KC_D)
-#define HRM_F MT(MOD_LCTL, KC_F)
-#define HRM_J MT(MOD_RCTL, KC_J)
-#define HRM_K MT(MOD_RSFT, KC_K)
-#define HRM_L MT(MOD_LALT, KC_L)
-#define HRM_SCL MT(MOD_LGUI, KC_SCLN)
-
 #define ALTWIN MT(MOD_LALT, KC_LGUI)
 #define ALTENT MT(MOD_LALT, KC_ENT)
 #define SHIFTorENTER MT(MOD_LSFT, KC_ENT)
@@ -251,14 +242,6 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case HRM_A:
-        case HRM_SCL:
-            return 350;
-        case HRM_S:
-        case HRM_L:
-            return 250;
-        case HRM_D:
-        case HRM_K:
 	case SHIFTorENTER:
             return 150;
         default:

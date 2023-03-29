@@ -6,18 +6,18 @@
 #define _NUMBER 3
 
 #define ALTENT MT(MOD_LALT, KC_ENT)
-#define SHIFTandENTER LSFT(KC_ENT)
+#define SHIFTandENTER S(KC_ENT)
 
 #define LOCK TD(TAPDANCE_LOCK)
 #define CAPS TD(TAPDANCE_CAPS)
 
-#define CONTEXT_ACTIONS LALT(KC_ENT)
-#define CODE_COMPLETION LCTL(KC_SPC)
-#define PRT_WIN LALT(KC_PSCR)
+#define CONTEXT_ACTIONS A(KC_ENT)
+#define CODE_COMPLETION C(KC_SPC)
+#define PRT_WIN A(KC_PSCR)
 #define FIND RCS(KC_F)
 #define TEST RCS(KC_T)
-#define RENAME LSFT(KC_F6)
-#define USAGES LALT(KC_F7)
+#define RENAME S(KC_F6)
+#define USAGES A(KC_F7)
 #define FORMAT LCA(KC_L)
 #define HINT C(KC_P)
 

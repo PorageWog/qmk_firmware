@@ -5,9 +5,7 @@
 #define _SYMBOL 2
 #define _NUMBER 3
 
-#define ALTWIN MT(MOD_LALT, KC_LGUI)
 #define ALTENT MT(MOD_LALT, KC_ENT)
-#define SHIFTorENTER MT(MOD_LSFT, KC_ENT)
 #define SHIFTandENTER LSFT(KC_ENT)
 
 #define TD_Q TD(TAPDANCE_Q_TAB)
@@ -242,8 +240,6 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-	case SHIFTorENTER:
-            return 150;
         default:
             return 200;
     }

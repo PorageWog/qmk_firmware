@@ -1,9 +1,9 @@
 #include QMK_KEYBOARD_H
 
-#define _QWERTY 0
-#define _SYMBOL 1
-#define _NUMBER 2
-#define _MISC 3
+#define _COLEMAK 0
+#define _QWERTY 1
+#define _SYMBOL 2
+#define _NUMBER 3
 
 #define HRM_A MT(MOD_LGUI, KC_A)
 #define HRM_S MT(MOD_LALT, KC_S)
@@ -39,13 +39,13 @@
 #define FORMAT LCA(KC_L)
 #define HINT C(KC_P)
 
-#define KC_SYM MO(1)
-#define KC_NUMS MO(2)
-#define KC_MISC MO(3)
-#define W_RSE LT(2, KC_LGUI)
+#define KC_COLEMAK DF(_COLEMAK)
+#define KC_MISC MO(_QWERTY)
+#define KC_SYM MO(_SYMBOL)
+#define KC_NUMS MO(_NUMBER)
 
 enum custom_keycodes {
-  QWERTY = SAFE_RANGE,
+  COLEMAK = SAFE_RANGE,
   LOWER,
   RAISE,
   FUNCTION,
@@ -115,15 +115,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_MISC] = LAYOUT(
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
-     _______ ,_______ ,_______ ,_______ ,_______ ,_______                            ,_______ ,_______ ,_______ ,_______ ,_______ ,_______
+     KC_QWERT,_______ ,_______ ,FIND    ,_______ ,TEST                               ,RENAME  ,USAGES  ,_______ ,FORMAT  ,HINT    ,_______
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-    ,_______ ,_______ ,PRT_WIN ,_______ ,_______ ,_______                            ,_______ ,_______ ,_______ ,_______ ,KC_PSCR ,_______
+    ,KC_TAB  ,KC_Q    ,KC_W    ,KC_F    ,KC_P    ,KC_B                               ,KC_J    ,KC_L    ,KC_U    ,KC_Y    ,KC_SCLN ,KC_BSPC
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-    ,_______ ,_______ ,_______ ,_______ ,_______ ,_______                            ,KC_HOME ,KC_PGDN ,KC_PGUP ,KC_END  ,_______ ,_______
+    ,KC_ESC  ,KC_A    ,KC_R    ,KC_S    ,KC_T    ,KC_G                               ,KC_M    ,KC_N    ,KC_E    ,KC_I    ,KC_O    ,KC_QUOT
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-    ,_______ ,_______ ,_______ ,_______ ,_______ ,_______ ,_______          ,_______ ,KC_NUM  ,_______ ,_______ ,_______ ,_______ ,_______
+    ,KC_LBRC ,KC_Z    ,KC_X    ,KC_C    ,KC_D    ,KC_V    ,KC_EQL           ,KC_MINS ,KC_K    ,KC_H    ,KC_COMM ,KC_DOT  ,KC_SLSH ,KC_RBRC
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
-                                   ,_______ ,_______ ,_______                   ,_______ ,_______ ,_______
+                                   ,KC_LCTL ,ALTENT  ,KC_LSFT                   ,KC_SPC  ,KC_NUMS ,KC_SYM
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
   ),
 
@@ -148,35 +148,35 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
     case QWERTY:
       if (record->event.pressed) {
-        set_single_persistent_default_layer(_QWERTY);
+        set_single_persistent_default_layer(_COLEMAK);
       }
       return false;
       break;
     case LOWER:
       if (record->event.pressed) {
         layer_on(_SYMBOL);
-        update_tri_layer(_SYMBOL, _NUMBER, _MISC);
+        update_tri_layer(_SYMBOL, _NUMBER, _QWERTY);
       } else {
         layer_off(_SYMBOL);
-        update_tri_layer(_SYMBOL, _NUMBER, _MISC);
+        update_tri_layer(_SYMBOL, _NUMBER, _QWERTY);
       }
       return false;
       break;
     case RAISE:
       if (record->event.pressed) {
         layer_on(_NUMBER);
-        update_tri_layer(_SYMBOL, _NUMBER, _MISC);
+        update_tri_layer(_SYMBOL, _NUMBER, _QWERTY);
       } else {
         layer_off(_NUMBER);
-        update_tri_layer(_SYMBOL, _NUMBER, _MISC);
+        update_tri_layer(_SYMBOL, _NUMBER, _QWERTY);
       }
       return false;
       break;
     case FUNCTION:
       if (record->event.pressed) {
-        layer_on(_MISC);
+        layer_on(_QWERTY);
       } else {
-        layer_off(_MISC);
+        layer_off(_QWERTY);
       }
       return false;
       break;
@@ -202,17 +202,17 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
     return true;
 }
 
-const rgblight_segment_t PROGMEM qwerty_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+const rgblight_segment_t PROGMEM colemak_layer[] = RGBLIGHT_LAYER_SEGMENTS(
     {0, 12, HSV_OFF}
 );
 
-const rgblight_segment_t PROGMEM lower_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+const rgblight_segment_t PROGMEM number_layer[] = RGBLIGHT_LAYER_SEGMENTS(
     {0, 12, HSV_BLUE}
 );
-const rgblight_segment_t PROGMEM raise_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+const rgblight_segment_t PROGMEM symbol_layer[] = RGBLIGHT_LAYER_SEGMENTS(
     {0, 12, HSV_YELLOW}
 );
-const rgblight_segment_t PROGMEM function_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+const rgblight_segment_t PROGMEM qwerty_layer[] = RGBLIGHT_LAYER_SEGMENTS(
     {0, 6, HSV_BLUE},
     {6, 12, HSV_YELLOW}
 );
@@ -222,10 +222,10 @@ const rgblight_segment_t PROGMEM capslock_layer[] = RGBLIGHT_LAYER_SEGMENTS(
 
 // Now define the array of layers. Later layers take precedence
 const rgblight_segment_t* const PROGMEM my_rgb_layers[] = RGBLIGHT_LAYERS_LIST(
+    colemak_layer,
     qwerty_layer,
-    lower_layer,
-    raise_layer,
-    function_layer,
+    symbol_layer,
+    number_layer,
     capslock_layer
 );
 
@@ -240,10 +240,10 @@ bool led_update_user(led_t led_state) {
 }
 
 layer_state_t layer_state_set_user(layer_state_t state) {
+    rgblight_set_layer_state(_COLEMAK, layer_state_cmp(state, _COLEMAK));
     rgblight_set_layer_state(_QWERTY, layer_state_cmp(state, _QWERTY));
     rgblight_set_layer_state(_SYMBOL, layer_state_cmp(state, _SYMBOL));
     rgblight_set_layer_state(_NUMBER, layer_state_cmp(state, _NUMBER));
-    rgblight_set_layer_state(_MISC, layer_state_cmp(state, _MISC));
     return state;
 }
 

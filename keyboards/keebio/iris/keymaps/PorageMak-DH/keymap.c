@@ -43,6 +43,8 @@
 #define KC_MISC MO(_QWERTY)
 #define KC_SYM MO(_SYMBOL)
 #define KC_NUMS MO(_NUMBER)
+#define KC_QWERT DF(_QWERTY)
+#define KC_COLEM DF(_COLEMAK)
 
 enum custom_keycodes {
   COLEMAK = SAFE_RANGE,
@@ -87,7 +89,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_QWERTY] = LAYOUT(
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
-     _______ ,_______ ,_______ ,_______ ,FIND    ,TEST                               ,RENAME  ,USAGES  ,_______ ,FORMAT  ,HINT    ,_______
+     KC_COLEM,_______ ,_______ ,_______ ,FIND    ,TEST                               ,RENAME  ,USAGES  ,_______ ,FORMAT  ,HINT    ,_______
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
     ,KC_TAB  ,KC_Q    ,KC_W    ,KC_E    ,KC_R    ,KC_T                               ,KC_Y    ,KC_U    ,KC_I    ,KC_O    ,KC_P    ,KC_BSPC
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤

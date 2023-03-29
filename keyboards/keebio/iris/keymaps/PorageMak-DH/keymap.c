@@ -20,6 +20,7 @@
 #define USAGES A(KC_F7)
 #define FORMAT LCA(KC_L)
 #define HINT C(KC_P)
+#define VSMENU RCS(KC_P)
 
 #define KC_COLEMAK DF(_COLEMAK)
 #define KC_MISC MO(_QWERTY)
@@ -49,7 +50,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_COLEMAK] = LAYOUT(
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
-     KC_QWERT,_______ ,_______ ,FIND    ,_______ ,TEST                               ,RENAME  ,USAGES  ,_______ ,FORMAT  ,HINT    ,_______
+     KC_QWERT,_______ ,_______ ,FIND    ,VSMENU  ,TEST                               ,RENAME  ,USAGES  ,_______ ,FORMAT  ,HINT    ,_______
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
     ,KC_TAB  ,KC_Q    ,KC_W    ,KC_F    ,KC_P    ,KC_B                               ,KC_J    ,KC_L    ,KC_U    ,KC_Y    ,KC_SCLN ,KC_BSPC
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤

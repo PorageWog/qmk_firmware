@@ -11,8 +11,8 @@
 #define LOCK TD(TAPDANCE_LOCK)
 #define CAPS TD(TAPDANCE_CAPS)
 
-#define CONTEXT_ACTIONS A(KC_ENT)
-#define CODE_COMPLETION C(KC_SPC)
+#define CONTEXT A(KC_ENT)
+#define COMPLETE C(KC_SPC)
 #define PRT_WIN A(KC_PSCR)
 #define FIND RCS(KC_F)
 #define TEST RCS(KC_T)
@@ -51,7 +51,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_COLEMAK] = LAYOUT(
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
-     KC_QWERT,_______ ,SNIP    ,FIND    ,VSMENU  ,TEST                               ,RENAME  ,USAGES  ,_______ ,FORMAT  ,HINT    ,_______
+     KC_QWERT,COMPLETE,CONTEXT ,FIND    ,VSMENU  ,TEST                               ,RENAME  ,USAGES  ,_______ ,FORMAT  ,HINT    ,SNIP
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
     ,KC_TAB  ,KC_Q    ,KC_W    ,KC_F    ,KC_P    ,KC_B                               ,KC_J    ,KC_L    ,KC_U    ,KC_Y    ,KC_SCLN ,KC_BSPC
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
@@ -101,7 +101,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
     ,CAPS    ,_______ ,_______ ,_______ ,_______ ,_______ ,KC_PLUS          ,_______ ,_______ ,_______ ,_______ ,_______ ,KC_BSLS ,_______
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
-                                   ,_______ ,_______ ,CONTEXT_ACTIONS   ,CODE_COMPLETION ,_______ ,_______
+                                   ,_______ ,_______ ,_______                   ,_______ ,_______ ,_______
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
   ),
 
